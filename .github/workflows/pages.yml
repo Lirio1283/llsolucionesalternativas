@@ -20,7 +20,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./wwwroot
+          path: ./
 
   deploy:
     needs: upload
