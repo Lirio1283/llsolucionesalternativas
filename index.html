@@ -13,14 +13,46 @@
             background-color: #f7f9fb;
         }
         .header-bg {
-            background-color: #0b2f5b; /* Azul Oscuro para un tono profesional */
+            position: relative;
+            /* Background image: villas/tourism - local asset */
+            background-image: url('./assets/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            overflow: hidden;
         }
+        .header-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11,47,91,0.65) 0%, rgba(11,47,91,0.65) 100%);
+            z-index: 0;
+        }
+        .header-bg > div { position: relative; z-index: 1; }
         .text-primary {
             color: #ff9900; /* Naranja/Amarillo para resaltar */
         }
         .bg-primary {
             background-color: #ff9900;
         }
+            /* WhatsApp floating button */
+            .whatsapp-btn {
+                position: fixed;
+                right: 1rem;
+                bottom: 1rem;
+                width: 56px;
+                height: 56px;
+                background: #25D366;
+                color: #fff;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+                text-decoration: none;
+                z-index: 1000;
+            }
+            .whatsapp-btn svg { width: 28px; height: 28px; }
         /* Estilo para el indicador de carga */
         .loading-spinner {
             border: 4px solid #f3f3f3;
@@ -61,121 +93,17 @@
                     </svg>
                     <a href="mailto:Grupolebronp@gmail.com" class="hover:text-primary">Grupolebronp@gmail.com</a>
                 </div>
+                <div class="flex items-center justify-end text-white">
+                    <span class="text-primary mr-2 text-lg">📱</span>
+                    <a href="https://wa.me/18299881111?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios" class="hover:text-primary" target="_blank" rel="noopener noreferrer">+1 829-988-1111 (WhatsApp)</a>
+                </div>
                 <p class="text-xs text-gray-400">República Dominicana</p>
             </div>
         </div>
     </header>
 
-    <!-- Sección Principal de Servicios -->
+    <!-- Sección Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-2 text-center">Nuestros Servicios Integrales</h1>
-        <p class="text-xl text-gray-600 mb-10 text-center">Diseño, Construcción y Gestión de Proyectos en la República Dominicana.</p>
-
-        <!-- Grid de Servicios -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Tarjeta: Diseño y Construcción de Viviendas -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🏠</span>
-                    <h2 class="text-xl font-bold text-gray-900">Diseño y Construcción de Viviendas</h2>
-                </div>
-                <p class="text-gray-600">Desde el concepto hasta la llave en mano, creamos hogares funcionales y estéticos que cumplen con los más altos estándares de calidad.</p>
-            </div>
-
-            <!-- Tarjeta: Gestión de Títulos y Deslinde -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">📜</span>
-                    <h2 class="text-xl font-bold text-gray-900">Gestión de Títulos y Deslinde</h2>
-                </div>
-                <p class="text-gray-600">Servicios de asesoría y tramitación legal para la obtención de títulos de propiedad y el deslinde de terrenos.</p>
-            </div>
-
-            <!-- Tarjeta: Estudios de Suelos -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🧪</span>
-                    <h2 class="text-xl font-bold text-gray-900">Estudios de Suelos</h2>
-                </div>
-                <p class="text-gray-600">Análisis geotécnicos detallados para garantizar la estabilidad y el diseño estructural óptimo de cualquier edificación.</p>
-            </div>
-
-            <!-- Tarjeta: Supervisión de Proyectos -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🏗️</span>
-                    <h2 class="text-xl font-bold text-gray-900">Supervisión de Proyectos</h2>
-                </div>
-                <p class="text-gray-600">Control riguroso de la ejecución, calidad de materiales y cumplimiento de plazos en cada fase de la obra.</p>
-            </div>
-
-            <!-- Tarjeta: Levantamiento Topográfico -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🗺️</span>
-                    <h2 class="text-xl font-bold text-gray-900">Levantamiento Topográfico</h2>
-                </div>
-                <p class="text-gray-600">Mediciones precisas del terreno y elaboración de planos topográficos para el diseño y planificación.</p>
-            </div>
-            
-            <!-- SERVICIO: Movimiento de Suelos -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🚜</span>
-                    <h2 class="text-xl font-bold text-gray-900">Movimiento de Suelos</h2>
-                </div>
-                <p class="text-gray-600">Preparación de terrenos, excavaciones, rellenos y nivelación para cimentaciones y plataformas de construcción.</p>
-            </div>
-
-            <!-- SERVICIO: Demolición y Bote de Materiales -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">💣</span>
-                    <h2 class="text-xl font-bold text-gray-900">Demolición y Bote de Materiales</h2>
-                </div>
-                <p class="text-gray-600">Demoliciones controladas y manejo responsable, transporte y disposición final de los escombros de la obra.</p>
-            </div>
-
-            <!-- SERVICIO: Renta de Equipos de Construcción -->
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <span class="text-primary mr-3 text-3xl">🛠️</span>
-                    <h2 class="text-xl font-bold text-gray-900">Renta de Equipos de Construcción</h2>
-                </div>
-                <p class="text-gray-600">Alquiler de maquinaria y equipos pesados y ligeros, mantenidos bajo altos estándares de seguridad y eficiencia.</p>
-            </div>
-        </div>
-
-        <!-- Sección del Asistente de Viabilidad (Gemini LLM) -->
-        <section class="mt-20 p-8 bg-white rounded-xl shadow-2xl border border-gray-100">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-4 text-center">Asistente de Viabilidad Preliminar ✨</h2>
-            <p class="text-lg text-gray-600 mb-6 text-center">Describe tu idea de proyecto (ej. "Quiero construir un edificio de 4 apartamentos en un solar de 300m²") y recibe un análisis inicial impulsado por la IA.</p>
-
-            <div class="max-w-3xl mx-auto">
-                <textarea id="project-description" rows="4" class="w-full p-4 border-2 border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition duration-200 resize-none" placeholder="Describe tu proyecto de construcción o gestión aquí..."></textarea>
-                
-                <div class="text-center mt-4">
-                    <button id="analyze-button" class="px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 text-lg uppercase tracking-wider transform hover:scale-105 flex items-center justify-center mx-auto">
-                        Generar Análisis ✨
-                    </button>
-                    <!-- Indicador de carga (oculto por defecto) -->
-                    <div id="loading-indicator" class="hidden loading-spinner mt-4 mx-auto"></div>
-                </div>
-
-                <!-- Contenedor de Resultados -->
-                <div id="results-container" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-inner hidden">
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 border-b pb-2">Resultado del Análisis:</h3>
-                    <p id="analysis-output" class="text-gray-700 whitespace-pre-line"></p>
-                    <p class="text-sm italic text-gray-500 mt-4">Este análisis es preliminar y requiere la validación de nuestros consultores.</p>
-                </div>
-                <!-- Contenedor de Error (oculto por defecto) -->
-                <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg hidden">
-                    Ocurrió un error al procesar la solicitud. Por favor, inténtalo de nuevo o contáctanos directamente.
-                </div>
-            </div>
-        </section>
-
         <!-- Botón de Llamada a la Acción (CTA) -->
         <div class="mt-12 text-center">
             <a href="mailto:Grupolebronp@gmail.com" class="inline-block px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 text-lg uppercase tracking-wider transform hover:scale-105">
@@ -193,127 +121,12 @@
         </div>
     </footer>
 
-    <!-- Script de la aplicación (incluye la lógica del LLM) -->
-    <script>
-        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent';
-        const apiKey = ""; 
-
-        // Referencias a elementos del DOM
-        const descriptionTextarea = document.getElementById('project-description');
-        const analyzeButton = document.getElementById('analyze-button');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const resultsContainer = document.getElementById('results-container');
-        const analysisOutput = document.getElementById('analysis-output');
-        const errorMessage = document.getElementById('error-message');
-
-        /**
-         * Realiza llamadas a la API de Gemini con manejo de reintentos (exponential backoff).
-         * @param {object} payload - La carga útil de la API.
-         * @param {number} retries - Número de reintentos restantes.
-         */
-        async function fetchWithRetry(payload, retries = 3) {
-            const delay = 1000 * Math.pow(2, 3 - retries); // 1s, 2s, 4s
-
-            try {
-                const response = await fetch(`${API_URL}?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    if (response.status === 429 && retries > 0) { // Demasiadas peticiones
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                        return fetchWithRetry(payload, retries - 1);
-                    }
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                return await response.json();
-
-            } catch (error) {
-                if (retries > 0) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    return fetchWithRetry(payload, retries - 1);
-                }
-                throw error;
-            }
-        }
-
-        /**
-         * Función principal para generar el análisis del proyecto usando Gemini.
-         * NOTA: La lógica de la IA es lo suficientemente flexible para incluir los nuevos servicios automáticamente si son relevantes.
-         */
-        async function generateAnalysis() {
-            const projectDescription = descriptionTextarea.value.trim();
-            if (projectDescription.length < 20) {
-                // Usamos un div estilizado para no usar alert()
-                showTemporaryMessage("Por favor, describe tu proyecto con más detalle (mínimo 20 caracteres).", "bg-yellow-100 border-yellow-400 text-yellow-700");
-                return;
-            }
-
-            // Ocultar resultados/errores previos y mostrar el indicador de carga
-            resultsContainer.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-            analyzeButton.disabled = true;
-            analyzeButton.classList.add('opacity-50');
-            loadingIndicator.classList.remove('hidden');
-
-            const systemPrompt = "Actúa como un analista y consultor de proyectos de construcción preliminar para la empresa 'Llsoluciones Alternativas'. Tu tarea es tomar la descripción del proyecto del usuario y generar un análisis conciso y estructurado en español, utilizando un tono profesional y animador. El análisis debe contener estrictamente los siguientes tres puntos principales, presentados con negritas y saltos de línea: 1. **Evaluación de Complejidad Preliminar** (Estimación de la complejidad: Baja, Media, Alta). 2. **Servicios Recomendados de Llsoluciones Alternativas** (Lista con guiones de 2 a 4 servicios de la empresa que son cruciales para este tipo de proyecto. Los servicios disponibles son: Diseño y Construcción de Viviendas, Gestión de Títulos y Deslinde, Estudios de Suelos, Supervisión de Proyectos, Levantamiento Topográfico, Movimiento de Suelos, Demolición y Bote de Materiales, Renta de Equipos de Construcción). 3. **Próximos Pasos y Preguntas Clave** (2 preguntas específicas que el cliente debe responder para avanzar en la consulta, como el presupuesto estimado y la ubicación exacta).";
-            
-            const userQuery = `Analiza este proyecto de construcción: "${projectDescription}"`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-            };
-
-            try {
-                const result = await fetchWithRetry(payload);
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    analysisOutput.innerHTML = text.replace(/\n/g, '<br>'); // Mantener saltos de línea y formateado
-                    resultsContainer.classList.remove('hidden');
-                } else {
-                    errorMessage.classList.remove('hidden');
-                    analysisOutput.textContent = '';
-                }
-            } catch (error) {
-                console.error("Error en la llamada a la API de Gemini:", error);
-                errorMessage.classList.remove('hidden');
-            } finally {
-                // Restaurar el estado de los botones y el indicador
-                loadingIndicator.classList.add('hidden');
-                analyzeButton.disabled = false;
-                analyzeButton.classList.remove('opacity-50');
-            }
-        }
-        
-        // Función para mostrar mensajes temporales (en lugar de alert())
-        function showTemporaryMessage(message, classes) {
-            const tempDiv = document.createElement('div');
-            tempDiv.textContent = message;
-            tempDiv.className = `fixed bottom-5 left-1/2 transform -translate-x-1/2 p-4 rounded-lg shadow-xl z-50 transition-opacity duration-500 ${classes}`;
-            document.body.appendChild(tempDiv);
-            
-            setTimeout(() => {
-                tempDiv.classList.add('opacity-0');
-                setTimeout(() => tempDiv.remove(), 500);
-            }, 3000);
-        }
-
-        // Asignar el event listener al botón
-        analyzeButton.addEventListener('click', generateAnalysis);
-
-        // Inicializar con un mensaje de bienvenida/ejemplo en el output
-        window.onload = () => {
-             analysisOutput.innerHTML = "¡Introduce la descripción de tu proyecto arriba para obtener un análisis instantáneo!";
-             resultsContainer.classList.remove('hidden');
-        };
-
-    </script>
+    <!-- Botón flotante de WhatsApp -->
+    <a class="whatsapp-btn" href="https://wa.me/18299881111?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#25D366" d="M16 3C9.373 3 4 8.373 4 15c0 2.637.77 5.09 2.103 7.161L4 29l6.998-2.002A11.952 11.952 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3z"/>
+            <path fill="#FFF" d="M22.6 19.1c-.4-.2-2.4-1.2-2.8-1.4-.5-.2-.8-.3-1.1.2-.3.5-1 1.4-1.3 1.7-.3.3-.6.4-1 .2-.4-.2-1.6-.6-3-1.9-1.1-.9-1.8-1.9-2-2.2-.2-.3-.1-.5.1-.8.2-.2.4-.5.6-.8.2-.3.2-.5.3-.8.1-.3 0-.5-.01-.7-.02-.2-.8-1.9-1.1-2.6-.3-.8-.6-.7-.8-.7-.2 0-.5 0-.8.01s-.7.2-1 .6c-.3.4-1 1.4-1 3.3 0 1.8 1.3 3.6 1.5 3.9.2.3 1.5 2.6 4.2 3.6 2.6 1 2.6.7 3 0 .4-.7.4-1.3.3-1.5-.1-.2-.3-.3-.6-.5z"/>
+        </svg>
+    </a>
 </body>
-</html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
