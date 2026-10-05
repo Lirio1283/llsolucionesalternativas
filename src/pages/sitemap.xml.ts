@@ -1,0 +1,4 @@
+import {services,business} from '../data/services';
+import {getArticles} from '../lib/cms';
+import {escapeHtml} from '../lib/portable-text.mjs';
+export async function GET(){const articles=await getArticles();const paths=['/','/servicios/','/nosotros/','/blog/','/contacto/','/privacidad/',...services.map(service=>`/servicios/${service.slug}/`),...articles.map(article=>`/blog/${article.slug}/`),...Array.from({length:Math.max(0,Math.ceil(articles.length/9)-1)},(_,i)=>`/blog/pagina/${i+2}/`)];const body=`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map(path=>{const article=articles.find(item=>path===`/blog/${item.slug}/`);return `<url><loc>${escapeHtml(business.site+path)}</loc>${article?`<lastmod>${escapeHtml(article._updatedAt)}</lastmod>`:''}</url>`}).join('')}</urlset>`;return new Response(body,{headers:{'Content-Type':'application/xml; charset=utf-8'}});}

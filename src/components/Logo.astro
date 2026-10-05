@@ -1,0 +1,8 @@
+---
+interface Props { light?: boolean }
+const { light = false } = Astro.props;
+---
+<a class:list={['brand', { 'brand-light': light }]} href="/" aria-label="LL Soluciones Alternativas — inicio">
+  <svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><rect width="64" height="64" fill="currentColor"/><path d="M15 13v37h22V39H26V13zM38 13v37h15V39h-4V13z" fill="var(--paper)"/></svg>
+  <span>LL SOLUCIONES<span class="brand-sub">ALTERNATIVAS</span></span>
+</a>

@@ -1,0 +1,10 @@
+---
+import type { services } from '../data/services';
+interface Props { service: (typeof services)[number] }
+const { service } = Astro.props;
+const icons = ['⌑','⌖','▤','▧','≡','⌂','⊞','↗'];
+---
+<a class="service-card" href={`/servicios/${service.slug}/`} data-category={service.category}>
+  <div class="card-top"><span>{service.number} / {service.category.toUpperCase()}</span><span class="service-icon" aria-hidden="true">{icons[Number(service.number)-1]}</span></div>
+  <h3>{service.title}</h3><p>{service.short}</p><span class="arrow" aria-hidden="true">↗</span>
+</a>

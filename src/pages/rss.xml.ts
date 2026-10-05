@@ -1,0 +1,4 @@
+import {business} from '../data/services';
+import {getArticles} from '../lib/cms';
+import {escapeHtml} from '../lib/portable-text.mjs';
+export async function GET(){const articles=await getArticles();const body=`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Bitácora LL Soluciones Alternativas</title><link>${business.site}/blog/</link><description>Ideas para planificar y ejecutar su proyecto.</description><language>es-do</language>${articles.map(article=>`<item><title>${escapeHtml(article.title)}</title><link>${business.site}/blog/${article.slug}/</link><guid>${business.site}/blog/${article.slug}/</guid><description>${escapeHtml(article.excerpt)}</description><pubDate>${new Date(article.publishedAt).toUTCString()}</pubDate></item>`).join('')}</channel></rss>`;return new Response(body,{headers:{'Content-Type':'application/xml; charset=utf-8'}});}

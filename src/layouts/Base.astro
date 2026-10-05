@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { business } from '../data/services';
+interface Props { title: string; description: string; noindex?: boolean; schema?: Record<string, unknown>; image?: string }
+const { title, description, noindex = false, schema, image = '/images/social.png' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, business.site).href;
+const nav = [{href:'/servicios/',label:'Servicios'},{href:'/nosotros/',label:'La empresa'},{href:'/blog/',label:'Bitácora'}];
+const organization = { '@context': 'https://schema.org', '@type': 'Organization', name: business.legal, url: business.site, telephone: business.phone, email: business.email, logo: `${business.site}/favicon.svg`, areaServed: { '@type': 'Country', name: 'República Dominicana' } };
+const isArticle = schema?.['@type'] === 'Article';
+const breadcrumb = Astro.url.pathname === '/' ? null : {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Inicio',item:business.site+'/'},...(Astro.url.pathname.startsWith('/servicios/')&&Astro.url.pathname!=='/servicios/'?[{'@type':'ListItem',position:2,name:'Servicios',item:business.site+'/servicios/'}]:isArticle?[{'@type':'ListItem',position:2,name:'Bitácora',item:business.site+'/blog/'}]:[]),{'@type':'ListItem',position:Astro.url.pathname.startsWith('/servicios/')&&Astro.url.pathname!=='/servicios/'||isArticle?3:2,name:title,item:canonical}]};
+---
+<!doctype html><html lang="es"><head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title} | LL Soluciones Alternativas</title><meta name="description" content={description}/>
+  <link rel="canonical" href={canonical}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <meta name="theme-color" content="#20251f"/>{noindex && <meta name="robots" content="noindex, nofollow"/>}
+  <meta property="og:type" content={schema?.['@type'] === 'Article' ? 'article' : 'website'}/><meta property="og:locale" content="es_DO"/>
+  <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/>
+  <meta property="og:image" content={new URL(image, business.site).href}/><meta name="twitter:card" content="summary_large_image"/>
+  <link rel="alternate" type="application/rss+xml" title="Bitácora LL" href="/rss.xml"/>
+  <script type="application/ld+json" set:html={JSON.stringify(organization).replace(/</g,'\\u003c')}/>
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>}
+  {breadcrumb && !noindex && <script type="application/ld+json" set:html={JSON.stringify(breadcrumb).replace(/</g,'\\u003c')}/>}
+</head><body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="topline"><span>INGENIERÍA · DISEÑO · CONSTRUCCIÓN</span><span>BASE EN REPÚBLICA DOMINICANA <span class="status-dot"/></span></div>
+  <header class="header"><Logo/><nav aria-label="Navegación principal" class="desktop-nav">{nav.map(item=><a href={item.href} aria-current={Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}</nav><a class="header-cta" href="/contacto/">Hablemos de su proyecto <span aria-hidden="true">↗</span></a>
+  <details class="mobile-menu"><summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary><nav aria-label="Navegación móvil">{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto ↗</a></nav></details></header>
+  <main id="contenido"><slot/></main>
+  <section class="closing"><div><span class="eyebrow">EL SIGUIENTE PASO ES UNA CONVERSACIÓN</span><h2>Su proyecto merece<br/>un buen comienzo.</h2></div><a class="button button-orange" href="/contacto/">Conversemos <span aria-hidden="true">↗</span></a></section>
+  <footer class="footer"><div class="footer-main"><div><Logo light/><p>Documentación, campo y obra<br/>bajo una misma mesa técnica.</p></div><div><span class="eyebrow">CONTACTO DIRECTO</span><a href={`tel:${business.tel}`}>{business.phone}</a><a href={`mailto:${business.email}`}>{business.email}</a><a href={business.whatsapp} target="_blank" rel="noopener noreferrer">Escríbanos por WhatsApp ↗</a></div><div><span class="eyebrow">EXPLORE</span>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {business.legal}</span><span>República Dominicana · Consultas internacionales</span><a href="/privacidad/">Privacidad</a></div></footer>
+</body></html>
