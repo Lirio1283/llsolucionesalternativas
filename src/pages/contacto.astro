@@ -1,10 +1,11 @@
 ---
+import Arrow from '../components/Arrow.astro';
 import Base from '../layouts/Base.astro';
 import { services,business } from '../data/services';
 ---
 <Base title="Contacto y cotizaciones" description="Conversemos sobre el alcance, permisos y presupuesto de su obra. Contacte a LL Soluciones Alternativas por formulario, teléfono o WhatsApp.">
 <section class="page-intro"><span class="eyebrow">CONTACTO DIRECTO</span><h1>Toda buena obra<br/>empieza conversando.</h1><p>Cuéntenos sobre el alcance, los permisos y el presupuesto de su proyecto. Organizamos juntos el siguiente paso.</p></section>
-<section class="contact-layout"><div class="contact-info"><span class="eyebrow">ESTAMOS PARA ESCUCHAR</span><h2 style="margin-top:22px">Un contacto.<br/>Nuevas posibilidades.</h2><a href={`tel:${business.tel}`}>{business.phone} ↗</a><a href={`mailto:${business.email}`}>{business.email} ↗</a><a class="button button-outline" href={business.whatsapp} target="_blank" rel="noopener noreferrer" style="display:inline-flex;font-size:12px">Conversar por WhatsApp <span aria-hidden="true">↗</span></a><p>Empresa establecida en República Dominicana.<br/>Consultas internacionales sujetas a evaluación de alcance.</p></div>
+<section class="contact-layout"><div class="contact-info"><span class="eyebrow">ESTAMOS PARA ESCUCHAR</span><h2 style="margin-top:22px">Un contacto.<br/>Nuevas posibilidades.</h2><a href={`tel:${business.tel}`}>{business.phone} <Arrow /></a><a href={`mailto:${business.email}`}>{business.email} <Arrow /></a><a class="button button-outline" href={business.whatsapp} target="_blank" rel="noopener noreferrer" style="display:inline-flex;font-size:12px">Conversar por WhatsApp <span aria-hidden="true"><Arrow /></span></a><p>Empresa establecida en República Dominicana.<br/>Consultas internacionales sujetas a evaluación de alcance.</p></div>
 <form class="quote-form" name="cotizacion" method="POST" action="/gracias/" data-netlify="true" netlify-honeypot="website" id="quote-form"><input type="hidden" name="form-name" value="cotizacion"/><p hidden><label>No complete este campo: <input name="website" tabindex="-1" autocomplete="off"/></label></p>
 <div class="form-field full-width"><label for="name">Su nombre *</label><input id="name" name="nombre" autocomplete="name" required maxlength="120"/></div>
 <div class="form-field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254"/></div>
@@ -12,7 +13,7 @@ import { services,business } from '../data/services';
 <div class="form-field full-width"><label for="service">Servicio de interés *</label><select id="service" name="servicio" required><option value="">Seleccione un servicio</option>{services.map(service=><option value={service.slug}>{service.title}</option>)}<option value="por-definir">Necesito orientación</option></select></div>
 <div class="form-field"><label for="country">País</label><input id="country" name="pais" value="República Dominicana" autocomplete="country-name" maxlength="100"/></div><div class="form-field"><label for="location">Ubicación del proyecto *</label><input id="location" name="ubicacion" required maxlength="200" placeholder="Ciudad o sector"/></div>
 <div class="form-field full-width"><label for="message">¿Qué tiene en mente? *</label><textarea id="message" name="mensaje" required minlength="15" maxlength="5000" placeholder="Tipo de proyecto, etapa actual y lo que necesita resolver…"/></div>
-<p class="form-notice full-width">Al enviar, usaremos sus datos para responder esta consulta. Consulte nuestra <a href="/privacidad/">política de privacidad</a>. No incluya documentos de identidad ni información sensible.</p><p class="form-status full-width" id="form-status" role="status" aria-live="polite"/><button class="button button-dark full-width" type="submit">Enviar consulta <span aria-hidden="true">↗</span></button></form></section>
+<p class="form-notice full-width">Al enviar, usaremos sus datos para responder esta consulta. Consulte nuestra <a href="/privacidad/">política de privacidad</a>. No incluya documentos de identidad ni información sensible.</p><p class="form-status full-width" id="form-status" role="status" aria-live="polite"/><button class="button button-dark full-width" type="submit">Enviar consulta <span aria-hidden="true"><Arrow /></span></button></form></section>
 </Base>
 <script>
 const select=document.querySelector<HTMLSelectElement>('#service');const value=new URLSearchParams(window.location.search).get('servicio');if(select&&value&&Array.from(select.options).some(option=>option.value===value))select.value=value;
@@ -20,8 +21,9 @@ const form=document.querySelector<HTMLFormElement>('#quote-form');
 form?.addEventListener('submit',async event=>{
   event.preventDefault();const status=document.getElementById('form-status');const button=form.querySelector<HTMLButtonElement>('button[type=submit]');
   if(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'){if(status)status.textContent='El formulario se activa al publicar en Netlify. Para conversar ahora, utilice el teléfono o WhatsApp.';return;}
+  const buttonMarkup=button?.innerHTML;
   if(button){button.disabled=true;button.textContent='Enviando…';}if(status)status.textContent='';
   try{const data=new URLSearchParams();new FormData(form).forEach((value,key)=>{if(typeof value==='string')data.append(key,value)});const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()});if(!response.ok)throw new Error('submission');window.location.assign('/gracias/');}
-  catch{if(status)status.textContent='No pudimos enviar su consulta. Inténtelo de nuevo o escríbanos por WhatsApp.';if(button){button.disabled=false;button.innerHTML='Enviar consulta <span aria-hidden="true">↗</span>';}}
+  catch{if(status)status.textContent='No pudimos enviar su consulta. Inténtelo de nuevo o escríbanos por WhatsApp.';if(button){button.disabled=false;button.innerHTML=buttonMarkup||'Enviar consulta';}}
 });
 </script>

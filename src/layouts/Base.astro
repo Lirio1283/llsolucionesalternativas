@@ -1,4 +1,5 @@
 ---
+import Arrow from '../components/Arrow.astro';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import { business } from '../data/services';
@@ -25,9 +26,9 @@ const breadcrumb = Astro.url.pathname === '/' ? null : {'@context':'https://sche
 </head><body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="topline"><span>INGENIERÍA · DISEÑO · CONSTRUCCIÓN</span><span>BASE EN REPÚBLICA DOMINICANA <span class="status-dot"/></span></div>
-  <header class="header"><Logo/><nav aria-label="Navegación principal" class="desktop-nav">{nav.map(item=><a href={item.href} aria-current={Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}</nav><a class="header-cta" href="/contacto/">Hablemos de su proyecto <span aria-hidden="true">↗</span></a>
-  <details class="mobile-menu"><summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary><nav aria-label="Navegación móvil">{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto ↗</a></nav></details></header>
+  <header class="header"><Logo/><nav aria-label="Navegación principal" class="desktop-nav">{nav.map(item=><a href={item.href} aria-current={Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}</nav><a class="header-cta" href="/contacto/">Hablemos de su proyecto <span aria-hidden="true"><Arrow /></span></a>
+  <details class="mobile-menu"><summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary><nav aria-label="Navegación móvil">{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto <Arrow /></a></nav></details></header>
   <main id="contenido"><slot/></main>
-  <section class="closing"><div><span class="eyebrow">EL SIGUIENTE PASO ES UNA CONVERSACIÓN</span><h2>Su proyecto merece<br/>un buen comienzo.</h2></div><a class="button button-orange" href="/contacto/">Conversemos <span aria-hidden="true">↗</span></a></section>
-  <footer class="footer"><div class="footer-main"><div><Logo light/><p>Documentación, campo y obra<br/>bajo una misma mesa técnica.</p></div><div><span class="eyebrow">CONTACTO DIRECTO</span><a href={`tel:${business.tel}`}>{business.phone}</a><a href={`mailto:${business.email}`}>{business.email}</a><a href={business.whatsapp} target="_blank" rel="noopener noreferrer">Escríbanos por WhatsApp ↗</a></div><div><span class="eyebrow">EXPLORE</span>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {business.legal}</span><span>República Dominicana · Consultas internacionales</span><a href="/privacidad/">Privacidad</a></div></footer>
+  <section class="closing"><div><span class="eyebrow">EL SIGUIENTE PASO ES UNA CONVERSACIÓN</span><h2>Su proyecto merece<br/>un buen comienzo.</h2></div><a class="button button-orange" href="/contacto/">Conversemos <span aria-hidden="true"><Arrow /></span></a></section>
+  <footer class="footer"><div class="footer-main"><div><Logo light/><p>Documentación, campo y obra<br/>bajo una misma mesa técnica.</p></div><div><span class="eyebrow">CONTACTO DIRECTO</span><a href={`tel:${business.tel}`}>{business.phone}</a><a href={`mailto:${business.email}`}>{business.email}</a><a href={business.whatsapp} target="_blank" rel="noopener noreferrer">Escríbanos por WhatsApp <Arrow /></a></div><div><span class="eyebrow">EXPLORE</span>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {business.legal}</span><span>República Dominicana · Consultas internacionales</span><a href="/privacidad/">Privacidad</a></div></footer>
 </body></html>
