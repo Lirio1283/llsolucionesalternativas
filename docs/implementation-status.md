@@ -3,7 +3,7 @@
 ## Implemented
 
 - Original minimalist monogram, conceptual structural illustration, warm architectural palette, self-hosted Manrope, and responsive editorial layouts.
-- Homepage, eight service detail pages, filterable service index, company, contact, privacy, success, and 404 pages.
+- Homepage, twelve service detail pages, filterable service index, company, contact, privacy, success, and 404 pages. The owner added movimiento de suelo, transporte, perforación de pozos and demolición de infraestructuras on October 5, 2026.
 - Contact channels supplied by the owner; Netlify form with honeypot, validation, error handling, and service preselection. Email is required in this first version; phone is optional.
 - Published Sanity article integration, article pages, crawlable pagination, RSS, sitemap and robots policy. Honest empty state before approved articles exist.
 - Spanish Sanity Studio with article/author schemas, readiness validation, direct publishing after self-review and a private draft preview link.

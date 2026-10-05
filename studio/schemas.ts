@@ -1,6 +1,7 @@
 import {defineType,defineField} from 'sanity';
 const serviceOptions=[
  ['Ingeniería civil','ingenieria-civil'],['Agrimensura y deslinde','agrimensura-y-deslinde'],['Estudios de suelos','estudios-de-suelos'],['Planos MIVED y ayuntamientos','planos-mived-y-ayuntamientos'],['Presupuestos de obra','presupuestos-de-obra'],['Proyectos llave en mano','proyectos-llave-en-mano'],['Supervisión técnica','supervision-tecnica'],['Alquiler de equipos','alquiler-de-equipos'],
+ ['Movimiento de suelo','movimiento-de-suelo'],['Transporte','transporte'],['Perforación de pozos','perforacion-de-pozos'],['Demolición de infraestructuras','demolicion-de-infraestructuras'],
 ].map(([title,value])=>({title,value}));
 export const schemaTypes=[
  defineType({name:'author',title:'Autores',type:'document',fields:[

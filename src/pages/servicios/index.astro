@@ -3,9 +3,9 @@ import Base from '../../layouts/Base.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import { services } from '../../data/services';
 ---
-<Base title="Servicios de ingeniería, diseño y construcción" description="Explore nuestros servicios: ingeniería civil, agrimensura y deslinde, suelos, planos, presupuestos, llave en mano, supervisión y alquiler de equipos.">
-<section class="page-intro"><span class="eyebrow">PORTAFOLIO TÉCNICO / 08 SERVICIOS</span><h1>Servicios para cada<br/>etapa del proyecto.</h1><p>Desde conocer el terreno hasta coordinar la ejecución. Definimos el apoyo técnico que necesita y el alcance adecuado para su obra.</p></section>
-<section class="section"><div class="filter-bar" aria-label="Filtrar servicios">{['Todos','Terreno','Diseño','Ingeniería','Construcción'].map((category,i)=><button type="button" class="filter-button" data-filter={category} aria-pressed={i===0}>{category}</button>)}</div><div class="services-grid" id="service-grid">{services.map(service=><ServiceCard service={service}/>)}</div><p class="form-notice" style="margin-top:24px" id="filter-status" aria-live="polite">8 servicios disponibles.</p></section>
+<Base title="Servicios de ingeniería, diseño y construcción" description="Ingeniería y construcción en RD: suelos, planos, supervisión, equipos, movimiento de suelo, transporte, perforación de pozos y demolición de infraestructuras.">
+<section class="page-intro"><span class="eyebrow">PORTAFOLIO TÉCNICO / {String(services.length).padStart(2,'0')} SERVICIOS</span><h1>Servicios para cada<br/>etapa del proyecto.</h1><p>Desde conocer el terreno hasta coordinar la ejecución. Definimos el apoyo técnico que necesita y el alcance adecuado para su obra.</p></section>
+<section class="section"><div class="filter-bar" aria-label="Filtrar servicios">{['Todos','Terreno','Diseño','Ingeniería','Construcción'].map((category,i)=><button type="button" class="filter-button" data-filter={category} aria-pressed={i===0}>{category}</button>)}</div><div class="services-grid" id="service-grid">{services.map(service=><ServiceCard service={service}/>)}</div><p class="form-notice" style="margin-top:24px" id="filter-status" aria-live="polite">{services.length} servicios disponibles.</p></section>
 </Base>
 <script>
 const filters=document.querySelectorAll<HTMLButtonElement>('[data-filter]');
