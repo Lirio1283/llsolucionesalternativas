@@ -24,6 +24,10 @@ Antes de publicar, revisar el contenido técnico, confirmar el nombre del autor 
 
 ## Fotografías
 
+Actualización: las dos fotografías iniciales fueron sustituidas en los artículos publicados por ilustraciones arquitectónicas conceptuales generadas con el servicio integrado `image_gen`. Los originales nuevos son `images/sismos-conceptual.png` y `images/techo-conceptual.png`; los prompts completos y textos alternativos están en `images/generated-sources.json`. Las imágenes se identifican como generadas con IA, sin presentarlas como obras de la empresa ni detalles técnicos ejecutables. No se les atribuye una licencia de dominio público.
+
+`images/sanity-references.json` ahora contiene las referencias actuales. Las fotografías y sus licencias siguientes se conservan como archivo histórico.
+
 Se añadieron imágenes principales a los dos borradores, con texto alternativo y créditos enlazados al final. Son imágenes ilustrativas de terceros, no obras de la empresa:
 
 - Sismos: [Rebar.jpg, MarnixR](https://commons.wikimedia.org/wiki/File:Rebar.jpg), CC0 1.0; original de 600 × 800 px.
@@ -38,3 +42,5 @@ npx sanity exec scripts/add-editorial-images.mjs --with-user-token
 ```
 
 Este script modifica únicamente los dos borradores y conserva el texto existente. Actualiza su imagen principal y un crédito identificado; no publica artículos. Comprueba la revisión del documento para evitar sobrescribir una edición concurrente. Después se puede regenerar el NDJSON desde la raíz para incluir las imágenes.
+
+El script anterior corresponde a las fotografías antiguas. Para las nuevas ilustraciones, `studio/scripts/replace-editorial-images.mjs` sustituye imágenes y créditos en los artículos publicados y en cualquier borrador existente, con control de revisión. Ejecutarlo activa la compilación mediante el webhook; no modifica los demás campos editoriales.
