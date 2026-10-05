@@ -21,16 +21,25 @@ jobs:
       - run: npm run verify
   studio:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: studio
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22.22.0'
           cache: npm
-          cache-dependency-path: studio/package-lock.json
-      - run: npm ci --prefix studio
-      - run: npm run check --prefix studio
-      - run: npm run build --prefix studio
+          cache-dependency-path: |
+            package-lock.json
+            studio/package-lock.json
+      # Studio's Vite resolver also reads the ancestor Astro tsconfig.
+      # Install its referenced package, matching the local monorepo setup.
+      - run: npm ci
+        working-directory: .
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
         env:
           SANITY_STUDIO_PROJECT_ID: localcheck
           SANITY_STUDIO_DATASET: production
