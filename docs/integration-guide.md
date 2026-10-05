@@ -45,6 +45,10 @@ Do not expose private values in `PUBLIC_*` or `SANITY_STUDIO_*` fields, browser 
 
 Create a Netlify build hook targeting `main` and save its URL as `NETLIFY_BUILD_HOOK_URL`. In Sanity, create a webhook to `https://llsolucionesalternativas.com/api/cms-published` (use the live Netlify origin before DNS cutover). Enable create/update/delete for `production`, leave drafts disabled, and set the shared signing secret.
 
+Configured and verified on October 5, 2026: the Netlify `Sanity published content` build hook targets `main`, and the matching Sanity document webhook is enabled for `production`. `SANITY_WEBHOOK_SECRET` and `NETLIFY_BUILD_HOOK_URL` are stored in Netlify as standard variables, only in the production deploy context and with all scopes. The owner explicitly approved this configuration after Netlify rejected secret marking and Functions-only scopes with HTTP 403. No signing secret or private build-hook URL is committed to this repository or exposed in browser code.
+
+Verification: an unsigned request returned HTTP 401; a signed draft event returned HTTP 202 without requesting a build; a signed published-article event returned HTTP 202 and requested a production build. The resulting deployment reached `ready`. Both published articles return HTTP 200 and include Sanity images. This test sent signed events directly to the receiver without editing CMS content; delivery of the next actual Sanity publishing event can be inspected in its webhook attempt log and Netlify Deploys.
+
 Filter:
 
 ```groq

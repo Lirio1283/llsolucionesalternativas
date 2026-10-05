@@ -16,7 +16,7 @@
 
 - Sanity project `k56pw45w` is configured; the public `production` dataset is reachable. The owner deployed Studio at `https://llsolucionesalternativas.sanity.studio/`; confirm its credential-enabled CORS origin and publishing permissions.
 - Select a suitable plan and grant the father publishing access. He is responsible for reviewing and publishing his own articles.
-- Connect the existing Netlify project to the repository and configure environment variables, publication webhook, preview password and form notifications.
+- Netlify is connected to GitHub `main`; the Sanity publication webhook and production environment variables are configured. A signed published-content test triggered a successful production deploy. Preview password and form notifications still require confirmation.
 - Test real publishing permissions, authenticated draft previews, form delivery, publish/update/unpublish deploys and recovery with the actual accounts.
 - Verify DNS/HTTPS/host redirects and legacy indexed URL redirects before switching the domain. Preserve email records.
 - Confirm street address, exact service coverage, professional delivery details, lead retention, and image permissions. Collect real project images for a portfolio.
