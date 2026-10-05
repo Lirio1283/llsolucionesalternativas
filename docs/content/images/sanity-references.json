@@ -1,0 +1,66 @@
+{
+  "construccion-resistente-a-sismos-rd": {
+    "hero": {
+      "_type": "image",
+      "alt": "Paquetes de varillas de acero apilados en una obra",
+      "asset": {
+        "_type": "reference",
+        "_ref": "image-ec349225427a6d44605b2f261a64f7c2ca38d9a4-600x800-jpg"
+      }
+    },
+    "credit": {
+      "_type": "block",
+      "_key": "editorial-image-credit",
+      "style": "normal",
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "image-source",
+          "href": "https://commons.wikimedia.org/wiki/File:Rebar.jpg"
+        }
+      ],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "credit",
+          "text": "Imagen ilustrativa de varillas; no corresponde a un proyecto de la empresa. Foto: MarnixR, vía Wikimedia Commons. CC0 1.0.",
+          "marks": [
+            "image-source"
+          ]
+        }
+      ]
+    }
+  },
+  "prevenir-filtraciones-techos-rd": {
+    "hero": {
+      "_type": "image",
+      "alt": "Cubierta plana durante la instalación de una capa de impermeabilización",
+      "asset": {
+        "_type": "reference",
+        "_ref": "image-34cf4a0f9d6077e03a33188deb1db0d4fd1c5f09-1280x1029-jpg"
+      }
+    },
+    "credit": {
+      "_type": "block",
+      "_key": "editorial-image-credit",
+      "style": "normal",
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "image-source",
+          "href": "https://commons.wikimedia.org/wiki/File:Flat_roof_roofing.JPG"
+        }
+      ],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "credit",
+          "text": "Imagen ilustrativa de una cubierta plana; no corresponde a un proyecto de la empresa ni prescribe un sistema para su techo. Foto: KVDP, vía Wikimedia Commons. Dominio público.",
+          "marks": [
+            "image-source"
+          ]
+        }
+      ]
+    }
+  }
+}
