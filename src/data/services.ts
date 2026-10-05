@@ -10,7 +10,7 @@ export const services = [
 ] as const;
 export const business = {
   name: 'LL Soluciones Alternativas', legal: 'LLSOLUCIONES ALTERNATIVAS E.I.R.L.',
-  phone: '+1 829-988-1111', tel: '+18299881111', email: 'grupolebrop@gmail.com',
+  phone: '+1 829-988-1111', tel: '+18299881111', email: 'grupolebronp@llsolucionesalternativas.com',
   whatsapp: 'https://wa.me/18299881111?text=Hola%2C%20quisiera%20conversar%20sobre%20mi%20proyecto.',
   site: 'https://llsolucionesalternativas.com',
 };

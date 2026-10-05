@@ -43,7 +43,7 @@ If bilingual content is requested, revise routing to language prefixes, add tran
 
 The site should describe the company as based in the DR and offer an international inquiry path without claiming offices, licenses, permitting capability, or project experience abroad. Add an optional country field to inquiries; country-specific service pages require demonstrated capability and substantive local content. Language remains provisionally Spanish; international positioning does not automatically require English.
 
-Owner-supplied contact details supersede the existing HTML: telephone `+1 829-988-1111`, email `grupolebrop@gmail.com`. Confirm delivery during launch testing. The existing page uses a different email spelling, so update all visible contacts, form destinations, and structured data consistently. Street address and exact local coverage still require confirmation.
+Owner-supplied contact details supersede the existing HTML: telephone `+1 829-988-1111`, email `grupolebronp@llsolucionesalternativas.com`. Confirm delivery during launch testing. The existing page uses a different email spelling, so update all visible contacts, form destinations, and structured data consistently. Street address and exact local coverage still require confirmation.
 
 ## 4. Audience and conversion
 

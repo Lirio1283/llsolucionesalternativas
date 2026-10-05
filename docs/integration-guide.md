@@ -63,7 +63,7 @@ This initial webhook implementation does not maintain a distributed deduplicatio
 
 ## 4. Contact and domain launch
 
-Configure Netlify form submission notifications to `grupolebrop@gmail.com`. Submit a real test lead and confirm it arrives. Local preview deliberately does not pretend to send forms. The production form requires email; phone remains optional. Verify anti-spam behavior and agree lead retention with the owner.
+Configure Netlify form submission notifications to `grupolebronp@llsolucionesalternativas.com`. Submit a real test lead and confirm it arrives. Local preview deliberately does not pretend to send forms. The production form requires email; phone remains optional. Verify anti-spam behavior and agree lead retention with the owner.
 
 Verify the domain, preserve all email DNS records, and configure the apex HTTPS domain as primary. The Netlify app-host redirect assumes `llsolucionesalternativas.netlify.app`; confirm the actual hostname. Deploy previews receive noindex headers through the build script. Configure preview access protection in Netlify if required; noindex does not make a preview private.
 
